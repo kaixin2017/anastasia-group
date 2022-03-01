@@ -2,6 +2,7 @@ package org.launchcode.Health.Application.Controllers;
 //
 
 import org.launchcode.Health.Application.data.GoalRepository;
+import org.launchcode.Health.Application.data.UserRepository;
 import org.launchcode.Health.Application.models.Goal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,12 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("goals")
 public class GoalsController {
+    hello world
     @Autowired
     private GoalRepository goalRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping()
     public String displayAllGoals(Model model) {
@@ -48,6 +53,7 @@ public class GoalsController {
     public String displayDeleteGoalForm(Model model){
         model.addAttribute("title","Delete a Goal");
         model.addAttribute("goals", goalRepository.findAll());
+        model.addAttribute ("user", userRepository.findById(ID));
         return "goals/delete";
     }
     @PostMapping("delete")

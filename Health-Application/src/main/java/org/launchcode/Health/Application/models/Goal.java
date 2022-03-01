@@ -5,6 +5,7 @@ import org.launchcode.Health.Application.models.data.AbstractEntity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -24,6 +25,10 @@ public class Goal extends AbstractEntity {
 
     private int days;
 
+    @ManyToOne
+    private User user;
+
+
     public  Goal(){
     }
 
@@ -35,6 +40,13 @@ public class Goal extends AbstractEntity {
         this.days = days;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getDays() {
         return days;
